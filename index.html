@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Disney Characters</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="app" class="container py-5">
+
+        <h1 class="mb-3 text-center">Disney Characters</h1>
+        <p class="text-center mb-5" style="opacity:.7;">
+            Descubre tus personajes favoritos ✨
+        </p>
+
+        <!-- 🔹 FORMULARIO ARRIBA -->
+        <div class="card p-4 mb-5">
+            <h4 class="text-center mb-4">Agregar nuevo personaje</h4>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+
+                    <input class="form-control mb-3"
+                           placeholder="Nombre"
+                           v-model="nuevo.nombre">
+
+                    <input class="form-control mb-3"
+                           placeholder="URL de la imagen"
+                           v-model="nuevo.imagen">
+
+                    <input class="form-control mb-3"
+                           placeholder="Películas o series (separadas por coma)"
+                           v-model="nuevo.peliculas">
+
+                    <div class="text-center">
+                        <button class="btn btn-success w-100"
+                                @click="agregar">
+                            Agregar
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Buscador -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <input class="form-control mb-4 text-center"
+                       placeholder="Buscar personaje..."
+                       v-model="busqueda">
+            </div>
+        </div>
+
+        <!-- Barra progreso -->
+        <div class="progress mb-4 mx-auto" style="max-width: 600px;">
+            <div class="progress-bar" :style="{width: porcentaje + '%'}">
+                {{ porcentaje }}%
+            </div>
+        </div>
+
+        <p class="text-center fw-bold mb-5">
+            Total encontrados: {{ filtrados.length }}
+        </p>
+
+        <!-- Tarjetas -->
+        <div class="row">
+            <div class="col-md-4 mb-4" v-for="p in filtrados" :key="p._id">
+                <div class="card h-100">
+
+                    <img :src="p.imageUrl" v-if="p.imageUrl">
+
+                    <div class="card-body text-center">
+                        <h5 class="mb-3">{{p.name}}</h5>
+
+                        <button class="btn btn-primary btn-sm"
+                                @click="verDetalle(p)">
+                            Ver Detalle
+                        </button>
+
+                        <button class="btn btn-danger btn-sm ms-2"
+                                @click="eliminar(p._id)">
+                            Eliminar
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal-custom"
+             v-show="mostrarModal"
+             @click.self="mostrarModal=false">
+
+            <div class="modal-dialog">
+                <div class="modal-content p-3">
+
+                    <div class="modal-header border-0">
+                        <h5>{{ seleccionado.name }}</h5>
+                        <button class="btn-close"
+                                @click="mostrarModal=false"></button>
+                    </div>
+
+                    <div class="modal-body text-center">
+
+                        <img :src="seleccionado.imageUrl"
+                             v-if="seleccionado.imageUrl">
+
+                        <p class="mt-4 fw-bold">Películas</p>
+
+                        <ul v-if="seleccionado.films?.length"
+                            class="list-unstyled">
+                            <li v-for="f in seleccionado.films">
+                                🎬 {{f}}
+                            </li>
+                        </ul>
+
+                        <p v-else style="opacity:.7;">
+                            No tiene películas registradas
+                        </p>
+
+                        <p v-if="seleccionado.tvShows?.length"
+                           class="mt-4 fw-bold">Series</p>
+
+                        <ul v-if="seleccionado.tvShows?.length"
+                            class="list-unstyled">
+                            <li v-for="t in seleccionado.tvShows">
+                                📺 {{t}}
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="js/vue3.js"></script>
+    <script src="js/funciones.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+/* -------- BASE -------- */
+body {
+    background: radial-gradient(circle at top, #1b2735, #090a0f 70%);
+    font-family: "Poppins", sans-serif;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* -------- TITULO -------- */
+h1 {
+    font-weight: 800;
+    text-align: center;
+    color: white;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0, 140, 255, 0.6);
+}
+
+/* -------- INPUT -------- */
+input {
+    border-radius: 25px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    backdrop-filter: blur(8px);
+}
+
+input:focus {
+    border-color: #00bfff !important;
+    box-shadow: 0 0 15px rgba(0, 191, 255, .5) !important;
+}
+
+/* -------- PROGRESS -------- */
+.progress {
+    height: 22px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, .15);
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(0,0,0,.6);
+}
+
+/* -------- CARDS -------- */
+.card {
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    backdrop-filter: blur(10px);
+    transition: .4s;
+    box-shadow: 0 0 20px rgba(0, 140, 255, 0.08);
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 0 25px rgba(0, 140, 255, 0.4);
+}
+
+.card img {
+    height: 260px;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* -------- BOTONES -------- */
+.btn {
+    border-radius: 25px;
+    font-weight: 600;
+    padding: 8px 18px;
+    transition: .3s;
+    border: none;
+}
+
+/* Botón principal estilo Disney+ */
+.btn-primary {
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 191, 255, .6);
+}
+
+/* Botón eliminar */
+.btn-danger {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+}
+
+.btn-danger:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 75, 43, .6);
+}
+
+/* Botón agregar */
+.btn-success {
+    background: linear-gradient(90deg, #00b09b, #96c93d);
+}
+
+.btn-success:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(150, 201, 61, .6);
+}
+
+/* -------- CARD FORM -------- */
+.card.p-3 {
+    background: rgba(255,255,255,0.06);
+    border-radius: 25px;
+    backdrop-filter: blur(12px);
+}
+
+/* -------- MODAL -------- */
+.modal-custom {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #0f2027, #203a43, #2c5364);
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0 0 30px rgba(0, 191, 255, 0.4);
+    max-height: 90vh;
+    overflow: auto;
+    color: white;
+}
+
+.modal-body img {
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+.btn-close {
+    filter: invert(1);
+}
